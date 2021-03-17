@@ -37,7 +37,7 @@ const HomeScreen = ({ match, history }) => {
             <div className='categories'>
               <Row>
                 <Col sm={12} md={6}>
-                  <h2 style={{ color: "white" }}>Categories</h2>
+                  <h2 style={{ color: "white" }}>Products</h2>
                 </Col>
                 <Col sm={12} md={6} lg={6} xl={6} className='catBtn'>
                   <Dropdown>
