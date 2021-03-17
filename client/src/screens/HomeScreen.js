@@ -45,7 +45,7 @@ const HomeScreen = ({ match, history }) => {
                       variant='primary'
                       id='dropdown-basic'
                       style={{ borderRadius: 5 }}>
-                      {catgory}
+                      {catgory ? catgory : "All Categories"}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
@@ -53,7 +53,7 @@ const HomeScreen = ({ match, history }) => {
                         onClick={() => {
                           history.push(`/`);
                         }}>
-                        All
+                        All Categories
                       </Dropdown.Item>
                       <Dropdown.Item
                         value='a12asd'
