@@ -19,7 +19,9 @@ const Footer = () => {
               </p>
 
               <p style={{ color: "white", fontSize: 15 }}>
-                <Link style={{ color: "white" }}>Main Page</Link>
+                <Link style={{ color: "white" }} to='/'>
+                  Main Page
+                </Link>
               </p>
             </div>
           </Col>
