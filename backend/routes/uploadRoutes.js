@@ -1,43 +1,21 @@
 import path from "path";
 import express from "express";
 import multer from "multer";
+import { uploadFile, getFileStream } from "./s3.js";
+
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, "uploads/");
-  },
-  filename(req, file, cb) {
-    cb(
-      null,
-      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`
-    );
-  },
-});
+const upload = multer({ dest: "uploads/" });
 
-function checkFileType(file, cb) {
-  // const filetypes = /jpg|jpeg|png/;
-  // const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-  // const mimetype = filetypes.test(file.mimetype);
+router.post("/", upload.single("image"), async (req, res) => {
+  const file = req.file;
 
-  // if (extname && mimetype) {
+  // apply filter
+  // resize
 
-  // } else {
-  //   cb("Images only!");
-  // }
-  return cb(null, true);
-}
-
-const upload = multer({
-  storage,
-  fileFilter: function (req, file, cb) {
-    checkFileType(file, cb);
-  },
-});
-
-router.post("/", upload.single("image"), (req, res) => {
-  console.log("Imagggggg :: ", req.file.path);
-  res.send(`/${req.file.path}`);
+  const result = await uploadFile(file);
+  console.log("resoltss :: ", result);
+  res.send(result.Location);
 });
 
 export default router;

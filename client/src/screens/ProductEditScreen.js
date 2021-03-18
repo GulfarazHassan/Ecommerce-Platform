@@ -18,10 +18,12 @@ const ProductEditScreen = ({ match, history }) => {
   const [image2, setImage2] = useState("");
   const [image3, setImage3] = useState("");
   const [brand, setBrand] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState("Appliances");
   const [countInStock, setCountInStock] = useState(0);
   const [description, setDescription] = useState("");
   const [uploading, setUploading] = useState(false);
+  const [uploading2, setUploading2] = useState(false);
+  const [uploading3, setUploading3] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -84,7 +86,7 @@ const ProductEditScreen = ({ match, history }) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
-    setUploading(true);
+    setUploading2(true);
 
     try {
       const config = {
@@ -95,10 +97,10 @@ const ProductEditScreen = ({ match, history }) => {
 
       const { data } = await axios.post("/api/upload", formData, config);
       setImage2(data);
-      setUploading(false);
+      setUploading2(false);
     } catch (error) {
       console.error(error);
-      setUploading(false);
+      setUploading2(false);
     }
   };
 
@@ -106,7 +108,7 @@ const ProductEditScreen = ({ match, history }) => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
-    setUploading(true);
+    setUploading3(true);
 
     try {
       const config = {
@@ -117,10 +119,10 @@ const ProductEditScreen = ({ match, history }) => {
 
       const { data } = await axios.post("/api/upload", formData, config);
       setImage3(data);
-      setUploading(false);
+      setUploading3(false);
     } catch (error) {
       console.error(error);
-      setUploading(false);
+      setUploading3(false);
     }
   };
 
@@ -202,7 +204,7 @@ const ProductEditScreen = ({ match, history }) => {
                 label='Choose File'
                 custom
                 onChange={uploadFileHandler2}></Form.File>
-              {uploading && <Loader />}
+              {uploading2 && <Loader />}
             </Form.Group>
 
             <Form.Group controlId='image'>
@@ -217,7 +219,7 @@ const ProductEditScreen = ({ match, history }) => {
                 label='Choose File'
                 custom
                 onChange={uploadFileHandler3}></Form.File>
-              {uploading && <Loader />}
+              {uploading3 && <Loader />}
             </Form.Group>
 
             <Form.Group controlId='brand'>
