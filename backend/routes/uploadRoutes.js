@@ -14,7 +14,6 @@ router.post("/", upload.single("image"), async (req, res) => {
   // resize
 
   const result = await uploadFile(file);
-  console.log("resoltss :: ", result);
   res.send(result.Location);
 });
 

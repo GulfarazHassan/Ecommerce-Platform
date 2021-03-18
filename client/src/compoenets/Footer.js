@@ -31,11 +31,15 @@ const Footer = () => {
                 My Account
               </p>
               <p style={{ color: "white", fontSize: 15 }}>
-                <Link style={{ color: "white" }}>Sign In</Link>
+                <Link style={{ color: "white" }} to='/login'>
+                  Sign In
+                </Link>
               </p>
 
               <p style={{ color: "white", fontSize: 15 }}>
-                <Link style={{ color: "white" }}>Create Account</Link>
+                <Link style={{ color: "white" }} to='/register'>
+                  Create Account
+                </Link>
               </p>
             </div>
           </Col>
