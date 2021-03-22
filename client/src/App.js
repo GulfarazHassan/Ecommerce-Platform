@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Header from "./compoenets/Header";
@@ -19,17 +19,20 @@ import ProductListScreen from "./screens/ProductListScreen";
 import ProductEditScreen from "./screens/ProductEditScreen";
 import OrderListScreen from "./screens/OrderListScreen";
 import PrivacyPolicy from "./screens/PrivacyPolicy";
+import ProductCreate from "./screens/ProductCreate";
 import AboutUs from "./screens/AboutUs";
 import MissionStatment from "./screens/MissionStatment";
 import CourierGuide from "./screens/CourierGuide";
 import PaymentMethod from "./screens/PaymentMethod";
 import ContactUs from "./screens/ContactUs";
+import GlobalStyle from "./globalStyles";
 
 const App = () => {
   return (
     <Router>
-      <Header />
-      <main className='p-5'>
+      <GlobalStyle />
+
+      <main>
         <Route exact path='/login' component={LoginScreen} />
         <Route exact path='/payment' component={PaymentMethodScreen} />
         <Route exact path='/admin/userlist' component={UserListScreen} />
@@ -53,6 +56,7 @@ const App = () => {
         <Route exact path='/profile' component={ProfileScreen} />
         <Route exact path='/register' component={RegisterScreen} />
         <Route path='/product/:id' component={ProductScreen} />
+        <Route path='/admin/productcreate' component={ProductCreate} />
         <Route path='/admin/product/:id/edit' component={ProductEditScreen} />
         <Route path='/admin/orderlist' component={OrderListScreen} />
         <Route path='/cart/:id?' component={CartScreen} />
@@ -64,7 +68,7 @@ const App = () => {
           component={HomeScreen}
           exact
         />
-        <Route exact path='/' component={HomeScreen} exact ç />
+        <Route exact path='/' component={HomeScreen} exact />
       </main>
       <Footer />
     </Router>

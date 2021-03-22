@@ -41,8 +41,10 @@ const Product = ({ product, history }) => {
             height: "40px",
           }}>
           <div style={{ display: "flex", alignItems: "center" }}>
-            <p style={{ margin: 5, fontSize: 15 }}>Qty</p>
-            <Form.Control
+            <p style={{ margin: 5, fontSize: 15 }}>
+              <b>Qty # </b> 1
+            </p>
+            {/* <Form.Control
               as='select'
               onChange={(e) => {
                 console.log("Quantity is changing ... ", e.target.value);
@@ -53,7 +55,7 @@ const Product = ({ product, history }) => {
                   {x + 1}
                 </option>
               ))}
-            </Form.Control>
+            </Form.Control> */}
           </div>
           {product.countInStock === 0 ? (
             <p>
@@ -63,10 +65,11 @@ const Product = ({ product, history }) => {
             <Link
               to={`/cart/${product._id}?qty=${qty}`}
               style={{
-                background: "red",
+                background: "#ec8d18",
                 color: "white",
-                padding: 7,
+                padding: "0.5rem",
                 borderRadius: 5,
+                fontSize: "1rem",
               }}>
               Add To cart
             </Link>

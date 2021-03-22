@@ -5,7 +5,7 @@ import Product from "../models/productModel.js";
 // @routes GET /api/products
 // @access Public
 const getProducts = asyncHandler(async (req, res) => {
-  const pageSize = 15;
+  const pageSize = 16;
   const page = Number(req.query.pageNumber) || 1;
 
   if (req.query.category) {
@@ -74,16 +74,29 @@ const deleteProduct = asyncHandler(async (req, res) => {
 // @routes POST /api/products/
 // @access Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
+  const {
+    name,
+    price,
+    image,
+    image2,
+    image3,
+    brand,
+    category,
+    countInStock,
+    description,
+  } = req.body;
   const product = new Product({
-    name: "sample name",
-    price: 0,
+    name,
+    price,
+    image,
+    image2,
+    image3,
+    brand,
     user: req.user._id,
-    image: "/images/airpods.jpeg",
-    brand: "Sample brand",
-    category: "Sample category",
-    countInStock: 0,
+    category,
+    countInStock,
+    description,
     numReviews: 0,
-    description: "Sample description",
   });
 
   const createdProduct = await product.save();

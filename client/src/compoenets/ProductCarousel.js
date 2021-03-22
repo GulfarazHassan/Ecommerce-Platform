@@ -59,24 +59,26 @@ const ProductCarousel = () => {
     //     </Carousel.Item>
     //   ))}
     // </Carousel>
-    <Slider className='slider-wrapper' autoplay={3000}>
-      {products.map((item, index) => (
-        <div
-          key={index}
-          className='slider-content'
-          style={{
-            background: `url('${item.image}') no-repeat center center`,
-          }}>
-          <div className='inner'>
-            <h1>{item.name}</h1>
-            <p>{item.description}</p>
-            <Link to={`/product/${item._id}`}>
-              <button>Details</button>
-            </Link>
+    <div className='sliDiv'>
+      <Slider className='slider-wrapper' autoplay={3000}>
+        {products.map((item, index) => (
+          <div
+            key={index}
+            className='slider-content'
+            style={{
+              background: `url('${item.image}') no-repeat center center`,
+            }}>
+            <div className='inner'>
+              <h1>{item.name}</h1>
+              <p>{item.description}</p>
+              <Link to={`/product/${item._id}`}>
+                <button>Details</button>
+              </Link>
+            </div>
           </div>
-        </div>
-      ))}
-    </Slider>
+        ))}
+      </Slider>
+    </div>
   );
 };
 
